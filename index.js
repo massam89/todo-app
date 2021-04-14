@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 app.use('/public', express.static('public'));
 
 app.get('/', (req, res) => {
-  queryText = `SELECT * FROM todolist`
+  queryText = `SELECT * FROM todo`
 
   connection.query(queryText, function (error, results, fields) {
     if (error) throw error;
@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 app.post('/addTodo', (req, res) => {
   if (req.body.todoText !== '') {
     const id = uuidv4();
-    const queryText = `INSERT INTO todolist(id, todoText) VALUES(?, ?)`
+    const queryText = `INSERT INTO todo(id, todoText) VALUES(?, ?)`
 
     connection.query(queryText, [id, req.body.todoText], function (error, results, fields) {
       if (error) throw error;
@@ -54,7 +54,7 @@ app.post('/addTodo', (req, res) => {
 })
 
 app.delete('/deleteTodo/:id', (req, res) => {
-  const queryText = "DELETE FROM todolist WHERE id = '" + req.params.id + "'";
+  const queryText = "DELETE FROM todo WHERE id = '" + req.params.id + "'";
 
   connection.query(queryText, function (error, results, fields) {
     if (error) throw error;
@@ -64,7 +64,7 @@ app.delete('/deleteTodo/:id', (req, res) => {
 })
 
 app.put('/changeStatus/:id', (req, res) => {
-  const queryText = `UPDATE todolist SET status = ${req.body.status} WHERE id = '${req.params.id}'`
+  const queryText = `UPDATE todo SET status = ${req.body.status} WHERE id = '${req.params.id}'`
   connection.query(queryText, function (error, results, fields) {
     if (error) throw error;
     console.log(results);
