@@ -5,12 +5,7 @@ const mysql = require('mysql')
 const app = express();
 require('dotenv').config()
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME
-});
+const connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
