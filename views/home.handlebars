@@ -17,8 +17,7 @@
         <li class="list-group-item d-flex justify-content-between align-items-start mt-1" id={{this.id}}>
           <h2 class="ms-2 me-auto">{{this.todoText}}</h2>
           <button class="delete-buttom btn btn-danger" type="submit">delete</button>
-          <input class="checkbox btn-check" id="btncheck{{this.id}}" type="checkbox" {{this.status}}>
-          <label class="btn btn-outline-primary ms-3" for="btncheck{{this.id}}">Status</label>
+          <input class="checkbox-custom checkbox form-check-input ms-4 mt-2" id="btncheck{{this.id}}" type="checkbox" {{this.status}}>
         </li>
         {{/each}}
       </ul>
