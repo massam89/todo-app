@@ -49,7 +49,7 @@ app.post('/addTodo', (req, res) => {
 })
 
 app.delete('/deleteTodo/:id', (req, res) => {
-  const queryText = "DELETE FROM todo WHERE id = '" + req.params.id + "'";
+  const queryText = `DELETE FROM todo WHERE id = '${req.params.id}'`;
 
   connection.query(queryText, function (error, results, fields) {
     if (error) throw error;
@@ -66,7 +66,6 @@ app.put('/changeStatus/:id', (req, res) => {
     res.send({ status: 'done' })
   });
 })
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => { console.log(`Server is running on port ${PORT}`) });
