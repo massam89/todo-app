@@ -13,7 +13,7 @@ router.get("/",ensureAuthenticated2, (req, res) => res.render("welcome"));
 //dashboard
 router.get("/dashboard",ensureAuthenticated, (req, res) => {
 
-  queryText = `SELECT todo_id, todo_status, todo_text, user_email from todo join users on todo_user = user_id where user_id = ${req.user}`
+  queryText = `SELECT todo_id, todo_status, todo_text, user_email, user_name from todo join users on todo_user = user_id where user_id = ${req.user}`
  
   connection.query(queryText, function (error, results, fields) {
     if (error) throw error;
@@ -26,7 +26,7 @@ router.get("/dashboard",ensureAuthenticated, (req, res) => {
       }
     }
 
-    res.render('dashboard', { item: results, email: results[0] === undefined ? `Welcome user number ${req.user}` : results[0].user_email });
+    res.render('dashboard', { item: results, email: results[0] === undefined ? `Welcome user number ${req.user}` : results[0].user_name });
 
   });
  

@@ -54,8 +54,8 @@ router.post("/register", (req, res) => {
                 if(err) throw err;
                 newUser.password = hash
 
-                const queryText = `INSERT INTO users (user_email, user_password, user_created) VALUES(?, ?, ?)`;
-                connection.query(queryText, [newUser.email, newUser.password, newUser.date], (err, results, fields) => {
+                const queryText = `INSERT INTO users (user_name, user_email, user_password, user_created) VALUES(?, ?, ?, ?)`;
+                connection.query(queryText, [newUser.name,newUser.email, newUser.password, newUser.date], (err, results, fields) => {
                   if (err) throw err
                   console.log(results)
                   req.flash('success_msg', 'You are now registerd and can login')
