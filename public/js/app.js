@@ -3,6 +3,7 @@ const checkbox = document.getElementsByClassName('checkbox');
 
 for (i = 0; i < deleteButtom.length; i++) {
   deleteButtom[i].addEventListener('click', (e) => {
+    console.log(e.target.parentElement.id)
     const url = 'deleteTodo/' + e.target.parentElement.id;
     fetch(url, {
       method: 'DELETE'
@@ -16,7 +17,6 @@ for (i = 0; i < deleteButtom.length; i++) {
 for (i = 0; i < checkbox.length; i++) {
   checkbox[i].addEventListener('click', (e) => {
     const url = 'changeStatus/' + e.target.parentElement.id;
-
     fetch(url, {
       method: 'PUT',
       headers: {

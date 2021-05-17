@@ -1,4 +1,6 @@
 <main>
+  <a href="/users/logout" class="btn btn-primary mb-3">Logout</a>
+  <span>{{email}}</span>
   <div class="todo-form">
     <form method="POST" action="/addTodo">
       <label class="form-label fs-2" for="todoText">Todo Name</label>
@@ -10,10 +12,10 @@
   <div class="to-list mt-3">
     <ul class="list-group">
       {{#each item}}
-      <li class="list-group-item d-flex justify-content-between align-items-start mt-1" id={{this.id}}>
-        <h2 class="ms-2 me-auto">{{this.todoText}}</h2>
-        <button class="delete-buttom btn btn-danger" type="submit">delete</button>
-        <input class="checkbox-custom checkbox form-check-input ms-4 mt-2" id="btncheck{{this.id}}" type="checkbox" {{this.status}}>
+      <li class="list-group-item mt-1 clearfix" id={{this.todo_id}}>
+        <h2 class="float-left ms-2 me-auto">{{this.todo_text}}</h2>
+        <button class="float-right delete-buttom btn btn-primary" type="submit">delete</button>
+        <input class="float-right checkbox-custom checkbox ms-4 mt-2 mr-3" id="btncheck{{this.todo_id}}" type="checkbox" {{this.todo_status}}>
       </li>
       {{/each}}
     </ul>
