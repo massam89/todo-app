@@ -15,6 +15,7 @@ app.set('view engine', 'handlebars');
 
 app.use('/public', express.static('public'));
 
+
 //express session
 app.use(session({
     secret: 'secret',
